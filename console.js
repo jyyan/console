@@ -12,8 +12,8 @@ var length = methods.length;
 while (length--) {
   method = methods[length];
 
-  // Only stub undefined methods.
-  if (!console[method]) {
+  // Only stub undefined methods. and in the production env will stub all method
+  if (!console[method] || process.env.NODE_ENV === 'production' ) {
     console[method] = noop;
   }
 }
